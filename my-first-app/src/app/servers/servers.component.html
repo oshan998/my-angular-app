@@ -7,10 +7,25 @@
 <!-- <p [innerText]="allowNewServer"></p> -->
 <!-- <p>{{serverCreationStatus}}</p> -->
 <p *ngIf="serverCreated">server was created, server name is {{serverName}}</p>
-<app-server></app-server>
+<!-- <ng-template #noServer><p>No server was created</p></ng-template> -->
+<app-server *ngFor="let server of servers"></app-server>
 <hr>
 <input type="text" class="form-control" [(ngModel)]="username">
 <p>{{username}}</p>
 <button class="btn btn-primary" [disabled]="username===''" (click)="username=''">Reset username</button>
 <hr>
+<!-- <button class="btn btn-primary" (click)="paragraphContent = !paragraphContent">Display Details</button> -->
+<button class="btn btn-primary" (click)="onToggleDisplay()">Display Details</button>
+<p *ngIf="paragraphContent">hello my name is oshan nanayakkara</p>
+<div *ngFor="let logItem of log"
+[ngStyle]="{backgroundColor: logItem>=5? 'blue':'transparent'}"
+[ngClass]="{'white-text':logItem>=5}"
+>{{logItem}}</div>
+<hr>
+<button class="btn btn-primary" (click)="displayItem()">Display Details 2</button>
+<p *ngIf="displaycontent">hello i'm oshan</p>
+<div *ngFor="let arraycontent of clickarray; let i=index"
+[ngStyle]="{backgroundColor: i>=4? 'blue': 'transparent'}"
+[ngClass]="{'text-color':i>=4}"
+>{{arraycontent}}</div>
 
